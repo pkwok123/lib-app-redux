@@ -1,31 +1,16 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import HomeIcon from "@material-ui/icons/Home";
+import { withRouter } from "react-router-dom";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
-import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
-import withWidth from "@material-ui/core/withWidth";
-
 import { withStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import FilterListRoundedIcon from "@material-ui/icons/FilterListRounded";
-import IconButton from "@material-ui/core/IconButton";
-/* Tried to keep search components within searh container to make passing data easy but <AppBar> doesn't work separately */
-
 import SvgIcon from "@material-ui/core/SvgIcon";
 //import { mdiBarcodeScan } from "@mdi/js";
 import Button from "@material-ui/core/Button";
-
 import Filter from "./Filter";
-import { fetchSearch, searchQuery } from "../actions";
 
 const useStyles = withStyles((theme) => ({
   grow: {
@@ -36,7 +21,6 @@ const useStyles = withStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     padding: theme.spacing(2),
-    backgroundColor: "white",
   },
   barcodeBtn: {
     minWidth: 0,
@@ -53,6 +37,10 @@ class SearchBar extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({ query: this.props.queryStr });
+  }
+
   handleChangeQuery(event) {
     this.setState({ query: event.target.value });
   }
@@ -60,13 +48,12 @@ class SearchBar extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.history.push(`/search?q=${this.state.query}`);
-    console.log(this.state.query);
   }
 
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.paper}>
+      <Paper className={classes.paper} square>
         <Grid container md={8} spacing={1} wrap="nowrap">
           <Grid item className={classes.grow}>
             <form onSubmit={this.handleSubmit}>
@@ -102,7 +89,7 @@ class SearchBar extends Component {
             <Filter />
           </Grid>
         </Grid>
-      </div>
+      </Paper>
     );
   }
 }

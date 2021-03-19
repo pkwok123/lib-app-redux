@@ -1,7 +1,7 @@
-//Search
 export const SEARCH_REQUEST = "SEARCH_REQUEST";
 export const SEARCH_SUCCESS = "SEARCH_SUCCESS";
 export const SEARCH_FAILURE = "SEARCH_FAILURE";
+export const SEARCH_RESET = "SEARCH_RESET";
 
 const searchRequest = () => ({ type: SEARCH_REQUEST });
 const searchSuccess = (json, noResults) => ({
@@ -13,27 +13,40 @@ const searchFailure = (error) => ({
   type: SEARCH_FAILURE,
   error,
 });
+export const searchReset = () => ({ type: SEARCH_RESET });
 
-export const fetchSearch = (query) => (dispatch) => {
-  dispatch(searchRequest());
-  fetch(`/api/items/search?q=${query}`)
-    .then((response) => response.json())
-    .then(
-      (json) => {
-        json.length == 0
-          ? dispatch(searchSuccess(json, true))
-          : dispatch(searchSuccess(json, false));
-      },
-      (error) => dispatch(searchFailure(error))
-    );
+// Fetches the search query from the app's backend
+// Relies on Redux Thunk middleware.
+export const fetchSearch = (query) => (dispatch, getState) => {
+  const results = getState().search.results;
+  if (query && results.length === 0) {
+    dispatch(searchRequest());
+    fetch(`/api/items/search?q=${query}`)
+      .then((response) => response.json())
+      .then(
+        (json) => {
+          json.length == 0
+            ? dispatch(searchSuccess(json, true))
+            : dispatch(searchSuccess(json, false));
+        },
+        (error) => dispatch(searchFailure(error.message))
+      );
+  }
+  return null;
 };
 
-//Cart
-export const ADD_TO_CART = "ADD_TO_CART";
-export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
-export const CHECKOUT_REQUEST = "CHECKOUT_REQUEST";
-export const CHECKOUT_SUCCESS = "CHECKOUT_SUCCESS";
-export const CHECKOUT_FAILURE = "CHECKOUT_FAILURE";
+export const RESET_ERROR_MESSAGE = "RESET_ERROR_MESSAGE";
 
-export const addToCart = (isbn) => ({ type: ADD_TO_CART, isbn });
-export const removeFromCart = (isbn) => ({ type: REMOVE_FROM_CART, isbn });
+// Resets the currently visible error message.
+export const resetErrorMessage = () => ({
+  type: RESET_ERROR_MESSAGE,
+});
+
+// export const ADD_TO_CART = "ADD_TO_CART";
+// export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+// export const CHECKOUT_REQUEST = "CHECKOUT_REQUEST";
+// export const CHECKOUT_SUCCESS = "CHECKOUT_SUCCESS";
+// export const CHECKOUT_FAILURE = "CHECKOUT_FAILURE";
+
+// export const addToCart = (isbn) => ({ type: ADD_TO_CART, isbn });
+// export const removeFromCart = (isbn) => ({ type: REMOVE_FROM_CART, isbn });

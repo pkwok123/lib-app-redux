@@ -6,7 +6,7 @@ const imgStyle = {
   width: 100,
 };
 
-const SearchItem = ({ result, index }) => (
+const SearchItem = ({ result, index, handleImgClick }) => (
   <Grid item>
     <Grow in={true} timeout={1000 + 100 * index}>
       <Paper style={imgStyle} elevation={4}>
@@ -15,6 +15,7 @@ const SearchItem = ({ result, index }) => (
           style={imgStyle}
           id={result._id}
           src={result.cover_url}
+          onClick={(e) => handleImgClick(e.target.id)}
         />
       </Paper>
     </Grow>

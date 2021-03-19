@@ -1,9 +1,8 @@
-// import { combineReducers } from "redux";
-// import postReducer from "./postReducer";
-
 import { combineReducers } from "redux";
-import search, * as fromSearch from "./search";
+import { search } from "./search";
+import { errorMessage } from "./search";
 
 export default combineReducers({
   search,
+  errorMessage,
 });

@@ -1,36 +1,38 @@
-import {
-  ADD_TO_CART,
-  REMOVE_FROM_CART,
-  CHECKOUT_SUCCESS,
-  CHECKOUT_FAILURE,
-} from "../actions/index";
+// Cart Reducer Draft
 
-const initialState = {
-  addedIsbns: [],
-};
+// import {
+//   ADD_TO_CART,
+//   REMOVE_FROM_CART,
+//   CHECKOUT_SUCCESS,
+//   CHECKOUT_FAILURE,
+// } from "../actions/index";
 
-const addedIsbns = (state = initialState.addedIsbns, action) => {
-  switch (action.types) {
-    case ADD_TO_CART:
-      return [...state, action.isbn];
-    case REMOVE_FROM_CART:
-      return state.filter((addedIsbn) => addedIsbn !== action.isbn);
-    default:
-      return state;
-  }
-};
+// const initialState = {
+//   addedIsbns: [],
+// };
 
-const cart = (state = initialState, action) => {
-  switch (action.type) {
-    case CHECKOUT_SUCCESS:
-      return initialState;
-    case CHECKOUT_FAILURE:
-      return state; //action.cart?
-    default:
-      return { addedIsbns: addedIsbns(state.addedIsbns, action) };
-  }
-};
+// const addedIsbns = (state = initialState.addedIsbns, action) => {
+//   switch (action.types) {
+//     case ADD_TO_CART:
+//       return [...state, action.isbn];
+//     case REMOVE_FROM_CART:
+//       return state.filter((addedIsbn) => addedIsbn !== action.isbn);
+//     default:
+//       return state;
+//   }
+// };
 
-export const getAddedIsbns = (state) => state.addedIsbns;
+// const cart = (state = initialState, action) => {
+//   switch (action.type) {
+//     case CHECKOUT_SUCCESS:
+//       return initialState;
+//     case CHECKOUT_FAILURE:
+//       return state; //action.cart?
+//     default:
+//       return { addedIsbns: addedIsbns(state.addedIsbns, action) };
+//   }
+// };
 
-export default cart;
+// export const getAddedIsbns = (state) => state.addedIsbns;
+
+// export default cart;

@@ -13,7 +13,6 @@ import {
 } from "../reducers/search";
 import SearchItem from "../components/SearchItem";
 import SearchList from "../components/SearchList";
-import ContentDialog from "../components/ContentDialog";
 import Content from "../containers/Content";
 
 const loadData = (props) => {
@@ -30,6 +29,9 @@ class SearchContainer extends Component {
     this.handleImgClick = this.handleImgClick.bind(this);
     this.handleContentTabsChange = this.handleContentTabsChange.bind(this);
     this.handleContentDialogClose = this.handleContentDialogClose.bind(this);
+    this.handleContentCartChipOnDelete = this.handleContentCartChipOnDelete.bind(
+      this
+    );
   }
 
   componentDidMount() {
@@ -42,14 +44,20 @@ class SearchContainer extends Component {
     }
   }
 
-  handleImgClick(id) {
+  handleImgClick(event) {
     const { queryStr } = this.props;
+    const { id } = event.target;
 
     this.props.history.push(`/search?q=${queryStr}&_id=${id}`);
   }
-  handleContentTabsChange(newValue) {
+  handleContentTabsChange(event, newValue) {
     this.setState({ contentTabs: newValue });
   }
+
+  handleContentCartChipOnDelete() {
+    console.info("You clicked the delete icon.");
+  }
+
   handleContentDialogClose() {
     this.props.history.goBack();
     this.setState({ contentTabs: 0 });
@@ -79,8 +87,9 @@ class SearchContainer extends Component {
         <Content
           open={idStr ? true : false}
           handleOnClose={this.handleContentDialogClose}
-          //valueTabs={this.state.contentTabs}
-          //passTabsValue={this.handleContentTabsChange}
+          valueTabs={this.state.contentTabs}
+          handleTabsChange={this.handleContentTabsChange}
+          handleCartChipOnDelete={this.handleContentCartChipOnDelete}
           content={result || ""}
         />
       </SearchList>

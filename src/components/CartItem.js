@@ -42,6 +42,7 @@ const useStyles = withStyles({
   },
   itemTitle: {
     fontsize: "100%",
+    fontFamily: "Caveat",
   },
   removebtn: {
     width: "100%",
@@ -77,10 +78,13 @@ class CartItem extends Component {
               />
               <div className={classes.cardContent}>
                 <div style={{ flexGrow: 1 }}>
-                  <Typography className={classes.itemTitle}>
+                  <Typography variant="h6" className={classes.itemTitle}>
                     {item.title}
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography
+                    variant="body2"
+                    style={{ fontFamily: "Josefin Slab" }}
+                  >
                     {`By ${
                       item.author.length > 1
                         ? item.author[0].concat(" ...")

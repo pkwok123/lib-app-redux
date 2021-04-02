@@ -12,9 +12,9 @@ const styles = {
   },
 };
 
-const ContentTitle = ({ classes, content }) => (
+const ContentTitle = ({ classes, title }) => (
   <Typography variant="h2" className={clsx(classes.title, classes.fontFTG)}>
-    {content.title}
+    {title}
   </Typography>
 );
 

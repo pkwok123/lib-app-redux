@@ -17,9 +17,8 @@ export const searchReset = () => ({ type: SEARCH_RESET });
 
 // Fetches the search query from the app's backend
 // Relies on Redux Thunk middleware.
-export const fetchSearch = (query) => (dispatch, getState) => {
-  const results = getState().search.results;
-  if (query && results.length === 0) {
+export const fetchSearch = (query) => (dispatch) => {
+  if (query) {
     dispatch(searchRequest());
     fetch(`/api/items/search?q=${query}`)
       .then((response) => response.json())

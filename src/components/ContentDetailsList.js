@@ -1,14 +1,20 @@
 import React from "react";
 
-const ContentDetailsList = ({ content }) => (
+const ContentDetailsList = ({
+  author,
+  type,
+  publishYear,
+  series,
+  callNumber,
+}) => (
   <React.Fragment>
-    {content.author.map((e) => (
+    {author.map((e) => (
       <li>{e}</li>
     ))}
-    <li style={{ textTransform: "capitalize" }}>{content.type}</li>
-    <li>{content.publish_year}</li>
-    {content.series !== "None" ? <li>Series</li> : null}
-    {content.call_number !== "None" ? <li>{content.call_number}</li> : null}
+    <li style={{ textTransform: "capitalize" }}>{type}</li>
+    <li>{publishYear}</li>
+    {series !== "None" ? <li>Series</li> : null}
+    {callNumber !== "None" ? <li>{callNumber}</li> : null}
   </React.Fragment>
 );
 

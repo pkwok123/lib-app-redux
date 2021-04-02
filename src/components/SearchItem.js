@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Grow, Paper } from "@material-ui/core";
+import { getNoResults } from "../reducers/search";
 
 const imgStyle = {
   height: 140,
@@ -15,7 +16,7 @@ const SearchItem = ({ result, index, handleImgClick }) => (
           style={imgStyle}
           id={result._id}
           src={result.cover_url}
-          onClick={(e) => handleImgClick(e.target.id)}
+          onClick={handleImgClick}
         />
       </Paper>
     </Grow>

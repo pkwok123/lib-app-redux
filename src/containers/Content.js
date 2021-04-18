@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 
 import { Grid } from "@material-ui/core";
 
@@ -33,7 +31,7 @@ const ContentContainer = ({
       <DialogActions handleOnClose={handleOnClose} />
       <ContentMain>
         <ContentTitle title={content.title} />
-        <ContentUser ratingAmazon={content.rating.amazon} />
+        <ContentUser rating={content.rating} />
         <ContentSummary summary={content.summary} />
         <ContentDetails>
           <InlineDotList>

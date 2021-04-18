@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Chip, Grid, withStyles } from "@material-ui/core";
+import { Chip, withStyles } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
 const styles = {

@@ -7,21 +7,13 @@ const isbnSchema = new mongoose.Schema({
   available: { type: String, required: true },
 });
 
-const ratingSchema = new mongoose.Schema({
-  amazon: { type: String, required: true },
-  mcc: { type: String, required: true },
-});
-
 const itemSchema = new mongoose.Schema({
   isbn: {
     type: [isbnSchema],
     required: true,
   },
   call_number: String,
-  rating: {
-    type: ratingSchema,
-    required: true,
-  },
+  rating: { type: String, required: true },
   type: { type: String, required: true },
   cover_url: { type: String, required: true },
   title: { type: String, required: true },
@@ -57,4 +49,4 @@ itemSchema.index({ "$**": "text" }); // Search All Fields
 // Search Name & Title Fields
 // schema.index({name: 'text', 'title': 'text'});
 
-module.exports = Item = mongoose.model("item", itemSchema);
+module.exports = Item = mongoose.model("test", itemSchema);

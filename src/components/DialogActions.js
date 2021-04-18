@@ -6,7 +6,7 @@ import { ArrowBack } from "@material-ui/icons";
 const MyDialogActions = ({ handleOnClose }) => (
   <DialogActions style={{ justifyContent: "flex-start" }}>
     <IconButton onClick={handleOnClose}>
-      <ArrowBack color="black" />
+      <ArrowBack style={{ color: "black" }} />
     </IconButton>
   </DialogActions>
 );

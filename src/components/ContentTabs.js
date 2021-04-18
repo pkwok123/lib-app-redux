@@ -42,7 +42,7 @@ const ContentTabs = ({ valueTabs, handleTabsChange, classes, children }) => (
     >
       <Tab
         label="Cart"
-        icon={<StyledBadge badgeContent={0} showZero />}
+        icon={<StyledBadge badgeContent={6} showZero />}
         id={0}
         className={classes.tabCart}
       />

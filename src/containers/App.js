@@ -12,7 +12,7 @@ import Settings from "./Settings";
 import Cart from "../components/CartItem";
 import Search from "./Search";
 import SnackbarBtnBlack from "../components/SnackbarBtnBlack";
-import { getErrorMessage } from "../reducers/search";
+import { getErrorMessage } from "../reducers/error";
 import { resetErrorMessage } from "../actions";
 
 class App extends Component {
@@ -43,7 +43,7 @@ class App extends Component {
           <Route path="/search" component={Search} />
           <Route path="/cart" component={Cart} />
           <Route path="/settings" component={Settings} />
-          <Route path="*" to="/" />
+          <Route path="*" to="/home" />
         </Switch>
         {this.renderErrorMessage()}
       </ThemeProvider>

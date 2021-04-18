@@ -1,6 +1,4 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import OutlinedInput from "@material-ui/core/OutlinedInput";

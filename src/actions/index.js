@@ -24,7 +24,7 @@ export const fetchSearch = (query) => (dispatch) => {
       .then((response) => response.json())
       .then(
         (json) => {
-          json.length == 0
+          json.length === 0
             ? dispatch(searchSuccess(json, true))
             : dispatch(searchSuccess(json, false));
         },
@@ -39,6 +39,17 @@ export const RESET_ERROR_MESSAGE = "RESET_ERROR_MESSAGE";
 // Resets the currently visible error message.
 export const resetErrorMessage = () => ({
   type: RESET_ERROR_MESSAGE,
+});
+
+export const RELEVANCE = "relevance";
+
+export const SET_SORT_FILTER = "SET_SORT_FILTER";
+export const SET_FORMAT_FILTER = "SET_FORMAT_FILTER";
+
+export const setSortFilter = (filter) => ({ type: SET_SORT_FILTER, filter });
+export const setFormatFilter = (filter) => ({
+  type: SET_FORMAT_FILTER,
+  filter,
 });
 
 // export const ADD_TO_CART = "ADD_TO_CART";

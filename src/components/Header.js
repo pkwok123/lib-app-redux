@@ -21,9 +21,13 @@ const PaperStyled = styled(({ URL, ...other }) => <Paper {...other} />)(
     [theme.breakpoints.up(670)]: {
       // positions nav for web
       top: 0,
-      boxShadow: (props) => {
-        if (props.URL === "/search") return "none";
-      },
+      //fix? Warning: [JSS] Rule is not linked. Missing sheet option "link: true".
+      //Function values in nested rules are not supported yet, follow the v10 release updates in this issue https://github.com/cssinjs/jss/issues/795
+      //`${}` doesn't fix
+      boxShadow: (props) =>
+        props.URL === "/search"
+          ? "none"
+          : `0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)`,
     },
     [theme.breakpoints.down(670)]: {
       // positions nav for phones/small screens

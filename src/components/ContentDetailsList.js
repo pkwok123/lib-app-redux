@@ -8,8 +8,8 @@ const ContentDetailsList = ({
   callNumber,
 }) => (
   <React.Fragment>
-    {author.map((e) => (
-      <li>{e}</li>
+    {author.map((e, index) => (
+      <li key={index}>{e}</li>
     ))}
     <li style={{ textTransform: "capitalize" }}>{type}</li>
     <li>{publishYear}</li>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Grow, Paper } from "@material-ui/core";
-import { getNoResults } from "../reducers/search";
 
 const imgStyle = {
   height: 140,

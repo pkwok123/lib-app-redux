@@ -15,7 +15,7 @@ const ContentMoreDetails = ({
   children,
   classes,
 }) => (
-  <Typography variant="body1" className={classes.fontFTG}>
+  <Typography component="div" variant="body1" className={classes.fontFTG}>
     {series !== "None" ? `Series: ${series}` : null}
     {`Publisher: ${publishName}`}
     {` (${publishYear})`}

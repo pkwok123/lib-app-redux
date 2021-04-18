@@ -5,7 +5,7 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
 import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
 
-const ContentUser = ({ ratingAmazon }) => (
+const ContentUser = ({ rating }) => (
   <Grid container alignItems="center" justify="center">
     <Grid item style={{ padding: 12, paddingTop: 16 }}>
       <Typography
@@ -13,7 +13,7 @@ const ContentUser = ({ ratingAmazon }) => (
         color="textPrimary"
         style={{ fontFamily: "Josefin Slab" }}
       >
-        AR{ratingAmazon}
+        AR{rating}
       </Typography>
     </Grid>
     <Grid item>

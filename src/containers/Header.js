@@ -1,21 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { searchReset } from "../actions";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
-import Filter from "../components/Filter";
-import { Component } from "react";
+import Filter from "./Filter";
+import FilterBtn from "../components/FilterBtn";
 
 class HeaderContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       query: "",
+      openFilter: false,
     };
     this.handleChangeQuery = this.handleChangeQuery.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFilterClick = this.handleFilterClick.bind(this);
+    this.handleFilterClose = this.handleFilterClose.bind(this);
   }
 
   componentDidMount() {
@@ -34,9 +37,17 @@ class HeaderContainer extends Component {
     this.props.history.push(`/search?q=${this.state.query}`);
   }
 
+  handleFilterClick() {
+    this.setState({ openFilter: true });
+  }
+
+  handleFilterClose() {
+    this.setState({ openFilter: false });
+  }
+
   render() {
     const { URL, searchReset } = this.props;
-    const { query } = this.state;
+    const { query, openFilter } = this.state;
     return (
       <React.Fragment>
         <Header URL={URL} searchReset={searchReset} />
@@ -46,7 +57,8 @@ class HeaderContainer extends Component {
             handleChangeQuery={this.handleChangeQuery}
             handleSubmit={this.handleSubmit}
           >
-            <Filter />
+            <FilterBtn handleClick={this.handleFilterClick} />
+            <Filter isOpen={openFilter} handleClose={this.handleFilterClose} />
           </SearchBar>
         ) : null}
       </React.Fragment>

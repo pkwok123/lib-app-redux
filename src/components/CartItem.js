@@ -1,18 +1,14 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+
 import { Divider, withStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import HelpIcon from "@material-ui/icons/Help";
+
 import data from "../Data";
 
 const useStyles = withStyles({
@@ -74,6 +70,7 @@ class CartItem extends Component {
               <img
                 className={classes.image}
                 src={item.cover_url}
+                alt={item.title}
                 //title={item.title}
               />
               <div className={classes.cardContent}>

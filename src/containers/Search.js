@@ -5,12 +5,8 @@ import { withRouter } from "react-router-dom";
 import { Button, LinearProgress } from "@material-ui/core";
 
 import { fetchSearch } from "../actions";
-import {
-  getVisibleSearch,
-  getSearchStatus,
-  getNoResults,
-  getResult,
-} from "../reducers/search";
+import { getSearchStatus, getNoResults, getResult } from "../reducers/search";
+import { getVisibleSearch } from "../reducers";
 import SearchItem from "../components/SearchItem";
 import SearchList from "../components/SearchList";
 import Content from "../containers/Content";
@@ -55,7 +51,7 @@ class SearchContainer extends Component {
   }
 
   handleContentCartChipOnDelete() {
-    console.info("You clicked the delete icon.");
+    console.info("You clicked the add to cart icon.");
   }
 
   handleContentDialogClose() {
@@ -110,7 +106,7 @@ const mapStateToProps = (state, ownProps) => {
     idStr,
     result: getResult(state.search, idStr),
     isLoading: getSearchStatus(state.search),
-    results: getVisibleSearch(state.search),
+    results: getVisibleSearch(state),
     noResults: getNoResults(state.search),
   };
 };

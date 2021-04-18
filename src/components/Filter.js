@@ -97,114 +97,98 @@ class Filter extends Component {
 
     return (
       <React.Fragment>
-        <IconButton
-          color="inherit"
-          aria-label="filterBtn"
-          name="filterBtn"
-          onClick={this.handleClick}
-        >
-          <FilterListRoundedIcon />
-        </IconButton>
-
-        <Drawer
-          anchor="bottom"
-          open={this.state.isOpen}
-          onClose={this.handleClose}
-        >
-          {/* sm={11} xs={7}  */}
-          <div className={classes.container}>
-            <span
-              //display={this.state.isAdvSearchBtn ? "flex" : "none"}
-              className={classes.containerCloseBtn}
-            >
-              <Fade in={this.state.isAdvSearchBtn}>
-                <Button size="small" color="inherit" onClick={this.handleClose}>
-                  <CloseRoundedIcon />
-                </Button>
-              </Fade>
-            </span>
-            <Grid container alignItems="center" justify="center">
-              <Grid item>
-                <Grid container justify="center" wrap="nowrap">
-                  <Grid item className={classes.container}>
-                    <FormControl variant="outlined">
-                      <InputLabel htmlFor="outlined-sort-native-simple">
-                        Sort
-                      </InputLabel>
-                      <Select
-                        native
-                        //value={this.props.filterInput[0]}
-                        onChange={this.handleChange}
-                        label="Sort"
-                        inputProps={{
-                          name: "sortA_ZValue",
-                          id: "outlined-sort-native-simple",
-                        }}
-                      >
-                        <option aria-label="None" value="" />
-                        <option value={"relevance"}>Relevance</option>
-                        <option value={"ratingAmazon"}>Rating - Amazon</option>
-                        <option value={"title"}>Title</option>
-                        <option value={"author"}>Author</option>
-                        <option value={"subject"}>Subject</option>
-                      </Select>
-                    </FormControl>
-                  </Grid>
-                  <Grid item className={classes.container}>
-                    <FormControl variant="outlined">
-                      <InputLabel htmlFor="outlined-type-native-simple">
-                        Type
-                      </InputLabel>
-                      <Select
-                        native
-                        //value={this.props.filterInput[1]}
-                        onChange={this.handleChange}
-                        label="Type"
-                        inputProps={{
-                          name: "sortTypeValue",
-                          id: "outlined-type-native-simple",
-                        }}
-                      >
-                        <option aria-label="None" value="" />
-                        <option value={"all"}>All</option>
-                        <option value={"book"}>Books</option>
-                        <option value={"dvd"}>DVDs</option>
-                        <option value={"cd"}>CDs</option>
-                        <option value={"misc"}>Misc</option>
-                      </Select>
-                    </FormControl>
-                  </Grid>
+        <div className={classes.container}>
+          <span
+            //display={this.state.isAdvSearchBtn ? "flex" : "none"}
+            className={classes.containerCloseBtn}
+          >
+            <Fade in={this.state.isAdvSearchBtn}>
+              <Button size="small" color="inherit" onClick={this.handleClose}>
+                <CloseRoundedIcon />
+              </Button>
+            </Fade>
+          </span>
+          <Grid container alignItems="center" justify="center">
+            <Grid item>
+              <Grid container justify="center" wrap="nowrap">
+                <Grid item className={classes.container}>
+                  <FormControl variant="outlined">
+                    <InputLabel htmlFor="outlined-sort-native-simple">
+                      Sort
+                    </InputLabel>
+                    <Select
+                      native
+                      //value={this.props.filterInput[0]}
+                      onChange={this.handleChange}
+                      label="Sort"
+                      inputProps={{
+                        name: "sortA_ZValue",
+                        id: "outlined-sort-native-simple",
+                      }}
+                    >
+                      <option aria-label="None" value="" />
+                      <option value={"relevance"}>Relevance</option>
+                      <option value={"ratingAmazon"}>Rating - Amazon</option>
+                      <option value={"title"}>Title</option>
+                      <option value={"author"}>Author</option>
+                      <option value={"subject"}>Subject</option>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item className={classes.container}>
+                  <FormControl variant="outlined">
+                    <InputLabel htmlFor="outlined-type-native-simple">
+                      Type
+                    </InputLabel>
+                    <Select
+                      native
+                      //value={this.props.filterInput[1]}
+                      onChange={this.handleChange}
+                      label="Type"
+                      inputProps={{
+                        name: "sortTypeValue",
+                        id: "outlined-type-native-simple",
+                      }}
+                    >
+                      <option aria-label="None" value="" />
+                      <option value={"all"}>All</option>
+                      <option value={"book"}>Books</option>
+                      <option value={"dvd"}>DVDs</option>
+                      <option value={"cd"}>CDs</option>
+                      <option value={"misc"}>Misc</option>
+                    </Select>
+                  </FormControl>
                 </Grid>
               </Grid>
-              <Grid item className={classes.container}>
-                <ToggleButtonGroup
-                  //value={this.props.filterInput[2]}
-                  name="searchViewValue"
-                  exclusive
-                  onChange={this.handleChange}
-                  aria-label="searchViewValue"
-                >
-                  <ToggleButton value="module" aria-label="module">
-                    <ViewModuleIcon />
-                  </ToggleButton>
-                  <ToggleButton value="list" aria-label="list">
-                    <ViewListIcon />
-                  </ToggleButton>
-                </ToggleButtonGroup>
-              </Grid>
             </Grid>
-          </div>
-          <Button
-            className={classes.containerAdvBtn}
-            onClick={this.handleClickAdvSearchBtn}
-          >
-            Advance Search
-          </Button>
-          <AdvSearch
-            className={classes.container}
-            isOpen={this.state.isAdvSearchBtn}
-          />
-        </Drawer>
+            <Grid item className={classes.container}>
+              <ToggleButtonGroup
+                //value={this.props.filterInput[2]}
+                name="searchViewValue"
+                exclusive
+                onChange={this.handleChange}
+                aria-label="searchViewValue"
+              >
+                <ToggleButton value="module" aria-label="module">
+                  <ViewModuleIcon />
+                </ToggleButton>
+                <ToggleButton value="list" aria-label="list">
+                  <ViewListIcon />
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </Grid>
+          </Grid>
+        </div>
+        <Button
+          className={classes.containerAdvBtn}
+          onClick={this.handleClickAdvSearchBtn}
+        >
+          Advance Search
+        </Button>
+        <AdvSearch
+          className={classes.container}
+          isOpen={this.state.isAdvSearchBtn}
+        />
       </React.Fragment>
     );
   }
